@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Sweet Valentine 💖</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffd6e8, #ffe0f0);
+      text-align: center;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      overflow: hidden;
+      padding-top: 50px;
+    }
+
+    /* Paper-like card */
+    .letter {
+      background: #fff0f5;
+      border: 2px solid #ff4d88;
+      border-radius: 20px;
+      width: 80%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px 20px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      font-size: 20px;
+      color: #ff4d88;
+      line-height: 1.6;
+      position: relative;
+      transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+
+    .letter.hidden {
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    /* Button styling */
+    .pinkBtn {
+      background-color: #ff4d88;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    .pinkBtn:hover {
+      background-color: #ff3366;
+      transform: scale(1.1);
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d88;
+      font-size: 20px;
+      animation: floatUp 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-600px) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>💌 LETTER FOR MY BABY💌</h1>
+
+  <!-- Letter container -->
+  <div class="letter" id="letter">
+    <p>Happy Valentine’s Day, honey!🛐💖,</p>
+    <p>I just wanna take this moment to appreciate you,lovelove. I know this is not much, but I spend a lot of effort here hehe. This is the only thing I can do for now, create a website for you and tell you how much I appreciate you. Your smile, your laugh, your kindness, and your patience make me fall for you more every single day.</p>
+    <p>Every moment we spend together makes my life happier and more complete. You have this amazing way of making even the smallest things feel special, and I am so grateful to have you in my life, honey.🌸</p>
+  </div>
+
+  <!-- Next button -->
+  <button class="pinkBtn" onclick="nextMessage()">Next 💌</button>
+
+  <script>
+    const messages = [
+      `<p>Happy Valentine’s Day, honey! 💖🛐,</p>
+       <p>I just wanna take this moment to appreciate you,lovelove. I know this is not much, but I spend a lot of effort here hehe. This is the only thing I can do for now, create a website for you and tell you how much I appreciate you. Your smile, your laugh, your kindness, and your patience make me fall for you more every single day.🌸</p>
+       <p>Click next to continue…</p>`,
+
+      `<p>I know life can sometimes be hard, and things don’t always go as planned. But I want you to always remember that I am here for you, no matter what. I will always support you, encourage you, and stand by your side through every challenge and every joy. You never have to feel alone, honey.💕</p>
+       <p>Thank you for being patient with me, for understanding me, and for loving me in your own special way. I promise to never take you for granted. I promise to always listen, to care, and to try my best to make you happy every day. You deserve all the love in the world, and I want to be the one who gives it to you as much as I can.</p>`,
+
+      `<p>I hope today reminds you of how special you are to me, not just today but every day. You are my heart, my happiness, and my home. I love you more than I can ever fully express, but I will spend every day trying to show you just how much. 💖</p>
+       <p>Happy Valentine’s Day, my love. Thank you for being you, thank you for being amazing, and thank you for letting me love you. You are everything I could ever hope for, and I will always do my best to make you feel loved, valued, and cherished. ❤️</p>
+       <p>Click next to see a surprise!</p>`
+    ];
+
+    let index = 0;
+
+    function nextMessage() {
+      index++;
+      const letter = document.getElementById('letter');
+
+      if (index < messages.length) {
+        // fade out current message
+        letter.classList.add('hidden');
+        setTimeout(() => {
+          letter.innerHTML = messages[index];
+          letter.classList.remove('hidden');
+        }, 500);
+      } else {
+        // Go to next window/page after last message
+        window.location.href = "finalpage.html"; // <- Change this to your next page
+      }
+    }
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerText = '💖';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.fontSize = (10 + Math.random() * 20) + 'px';
+      heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }
+
+    setInterval(createHeart, 800);
+  </script>
+</body>
+</html>
+
+
+
